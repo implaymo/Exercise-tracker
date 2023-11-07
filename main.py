@@ -39,19 +39,22 @@ data = response_nutri.json()
 
 
 # Sheety.com Endpoint
-for exercise in data:
+for exercise in data["exercises"]:
+    type_of_exercise = exercise["user_input"]
+    duration_of_exercise = exercise["duration_min"]
+    calories = exercise["nf_calories"]
 
-data_for_sheet = {
-    "sheet1":
-        {
-            "date": today_date,
-            "time": time,
-            "exercise": data["exercises"][0]["user_input"],
-            "duration": data["exercises"][0]["duration_min"],
-            "calories": data["exercises"][0]["nf_calories"]
+    data_for_sheet = {
+        "sheet1":
+            {
+                "date": today_date,
+                "time": time,
+                "exercise": type_of_exercise,
+                "duration": duration_of_exercise,
+                "calories": calories
 
-        }
-}
+            }
+    }
 
-response_sheety = requests.post(url=POST_ENDPOINT, json=data_for_sheet, headers=headers)
-response_sheety.raise_for_status()
+    response_sheety = requests.post(url=POST_ENDPOINT, json=data_for_sheet, headers=headers)
+    response_sheety.raise_for_status()
