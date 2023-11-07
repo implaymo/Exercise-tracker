@@ -1,17 +1,12 @@
 import requests
-from dotenv import load_dotenv
 import os
 from datetime import datetime
-def configure():
-    load_dotenv()
 
-configure()
-
-APP_ID = os.getenv("APP_ID")
-APP_KEY= os.getenv("APP_KEY")
-MY_EMAIL = os.getenv("MY_EMAIL")
-EXERCISE_ENDPOINT = os.getenv("EXERCISE_ENDPOINT")
-POST_ENDPOINT = os.getenv("POST_ENDPOINT")
+APP_ID = os.environ["APP_ID"]
+APP_KEY = os.environ["APP_KEY"]
+MY_EMAIL = os.environ["MY_EMAIL"]
+EXERCISE_ENDPOINT = os.environ["EXERCISE_ENDPOINT"]
+POST_ENDPOINT = os.environ["POST_ENDPOINT"]
 
 today = datetime.now()
 today_date = today.strftime("%d/%m/%Y")
